@@ -1,1 +1,1 @@
-# thanks-card
+Wedding invitation page

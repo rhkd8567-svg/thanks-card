@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="모바일 청첩장">
+    <title>청첩장</title>
+    
+    <!-- Open Graph 메타 태그 (링크 공유 시 썸네일) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="원석 ♥ 한비 결혼합니다">
+    <meta property="og:description" content="2026년 1월 11일 일요일 오전 11시 | 순천아모르웨딩컨벤션">
+    <meta property="og:image" content="images/썸네일.jpg">
+    <meta property="og:url" content="">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- 네이버 지도 API -->
+    <!-- <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=2wtt0c80a1"></script> -->
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=2wtt0c80a1"></script>
+
+    <!-- Kakao SDK -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"></script>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, deleteDoc, doc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA2BZV0aIc7VjmHY4oats8vNZtuyVu9S50",
+            authDomain: "wedding-27c94.firebaseapp.com",
+            projectId: "wedding-27c94",
+            storageBucket: "wedding-27c94.firebasestorage.app",
+            messagingSenderId: "406271324350",
+            appId: "1:406271324350:web:306c638c3f8070e5bb2eef",
+            measurementId: "G-TGGJ6LBN4H"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // 전역으로 사용할 수 있도록 window에 저장
+        window.db = db;
+        window.firestoreModules = { collection, addDoc, query, orderBy, onSnapshot, deleteDoc, doc, updateDoc };
+    </script>
+</head>
+<body>
+    <main id="content">
+    <!-- 배경음악 -->
+    <audio id="backgroundMusic" loop muted>
+        <source src="Thankyou.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- 사운드 토글 버튼 -->
+    <button class="sound-toggle-btn" id="soundToggleBtn" onclick="toggleSound()">
+        <img src="images/soundon.svg" alt="사운드 켜기" id="soundIcon">
+    </button>
+    
+    <!-- 메인 헤더 -->
+    <section class="hero">
+        <div class="frame-3-container">
+            <img src="images/5.jpg" alt="Main Photo" class="frame-3-photo">
+        </div>
+        
+        <!-- 인사말 -->
+        <div class="greeting-content">
+            <div class="container">
+                <div class="invitation-label">THANKS</div>
+                <h1 class="invitation-title">귀한 걸음에 감사드립니다</h1>
+                <div class="greeting-text">
+                    <p>2026년을 밝히는 어느 추운 겨울,</p>
+                    <p>항상 서로의 손을 잡고 함께일 때 행복해하던 두 사람이</p>
+                    <p>맞잡은 두 손 놓지 않고 서로를 더욱 행복하게 해주리라</p>
+                    <p>약속하던 그 예쁜 날,</p>
+                    <p>귀한 발걸음으로 함께 밝혀주셔서 감사합니다.</p>
+                    <p>함께 밝혀주신 이 길,</p>
+                    <p>더욱 빛날 수 있도록 서로 아끼며 살아가겠습니다.</p>
+                </div>
+                <div class="greeting-divider"></div>
+                <div class="greeting-names">
+                    <p>장승용·정혜정<span class="relation">의 장남</span> 원석</p>
+                    <p>김영민·조기순<span class="relation">의 장녀</span> 한비</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 카카오톡 공유 및 링크 복사 -->
+    <div class="kakao-share-section">
+        <button onclick="shareKakao()" class="btn-kakao-share">
+            <span class="kakao-icon"><img src="images/kakaotalk.svg" alt="카카오톡"></span>
+            카카오톡 공유하기
+        </button>
+        <button onclick="copyLink()" class="btn-link-copy">
+            <span class="link-icon">🔗</span>
+            링크 복사하기
+        </button>
+    </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // 카카오 SDK 초기화 (index1.html 전용)
+        window.addEventListener('load', function() {
+            if (typeof Kakao !== 'undefined') {
+                if (!Kakao.isInitialized()) {
+                    Kakao.init('a23deef6d95570902f15e2c58fe9a3af');
+                    console.log('Kakao SDK 초기화 완료:', Kakao.isInitialized());
+                }
+            } else {
+                // SDK가 아직 로드되지 않은 경우 재시도
+                setTimeout(function() {
+                    if (typeof Kakao !== 'undefined' && !Kakao.isInitialized()) {
+                        Kakao.init('a23deef6d95570902f15e2c58fe9a3af');
+                        console.log('Kakao SDK 초기화 완료 (재시도):', Kakao.isInitialized());
+                    }
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
