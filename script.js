@@ -1624,8 +1624,8 @@ function shareKakao() {
     Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-            title: '귀한 발걸음 감사합니다',
-            description: '2026년 1월 11일 일요일 오전 11시 \n순천아모르웨딩컨벤션 1층 엘르홀',
+            title: '장원석 ♡ 김한비 결혼식에 초대합니다.',
+            description: '2026년 1월 11일 일요일 오전 11시\n순천아모르웨딩컨벤션 1층 엘르홀',
             imageUrl: 'https://ehrtjrhdcor.github.io/wedding/images/5.jpg',
             link: {
                 mobileWebUrl: 'https://ehrtjrhdcor.github.io/wedding/',
