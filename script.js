@@ -123,18 +123,28 @@ function startMusicAfterInteraction() {
     const music = document.getElementById('backgroundMusic');
     if (!music) return;
     
-    // 1초 후 음악 재생
-    setTimeout(() => {
-        music.muted = false;
-        music.play().then(() => {
-            isMusicPlaying = true;
-            isFirstInteractionHandled = true;
-            updateSoundIcon(true);
-        }).catch(() => {
-            isMusicPlaying = false;
-            updateSoundIcon(false);
-        });
-    }, 1000);
+    // 즉시 음악 재생
+    music.muted = false;
+    music.play().then(() => {
+        isMusicPlaying = true;
+        isFirstInteractionHandled = true;
+        updateSoundIcon(true);
+    }).catch((error) => {
+        console.log('음악 재생 실패:', error);
+        isMusicPlaying = false;
+        updateSoundIcon(false);
+        // 재생 실패 시 다시 시도
+        setTimeout(() => {
+            music.play().then(() => {
+                isMusicPlaying = true;
+                isFirstInteractionHandled = true;
+                updateSoundIcon(true);
+            }).catch(() => {
+                isMusicPlaying = false;
+                updateSoundIcon(false);
+            });
+        }, 100);
+    });
 }
 
 // 사운드 토글 함수
