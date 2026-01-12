@@ -101,18 +101,18 @@
 
     <script src="script.js"></script>
     <script>
-        // 카카오 SDK 초기화 (index1.html 전용)
+        // 카카오 SDK 초기화
         window.addEventListener('load', function() {
             if (typeof Kakao !== 'undefined') {
                 if (!Kakao.isInitialized()) {
-                    Kakao.init('a23deef6d95570902f15e2c58fe9a3af');
+                    Kakao.init('ae248ad0c8a6030638d1be0d2a3a49fd');
                     console.log('Kakao SDK 초기화 완료:', Kakao.isInitialized());
                 }
             } else {
                 // SDK가 아직 로드되지 않은 경우 재시도
                 setTimeout(function() {
                     if (typeof Kakao !== 'undefined' && !Kakao.isInitialized()) {
-                        Kakao.init('a23deef6d95570902f15e2c58fe9a3af');
+                        Kakao.init('ae248ad0c8a6030638d1be0d2a3a49fd');
                         console.log('Kakao SDK 초기화 완료 (재시도):', Kakao.isInitialized());
                     }
                 }, 500);

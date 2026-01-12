@@ -1620,37 +1620,22 @@ function initNaverMap() {
 
 // Kakao SDK 초기화
 if (typeof Kakao !== 'undefined' && !Kakao.isInitialized()) {
-    Kakao.init('a23deef6d95570902f15e2c58fe9a3af');
+    Kakao.init('ae248ad0c8a6030638d1be0d2a3a49fd');
     console.log('Kakao SDK 초기화 완료:', Kakao.isInitialized());
 }
 
-// 카카오톡 공유하기 함수
+// 카카오톡 공유하기 함수 (sendCustom 방식)
 function shareKakao() {
     if (typeof Kakao === 'undefined' || !Kakao.isInitialized()) {
         showToast('카카오톡 공유 기능을 불러오는 중입니다. 잠시 후 다시 시도해주세요.');
         return;
     }
 
-    Kakao.Share.sendDefault({
-        objectType: 'feed',
-        content: {
-            title: '장원석 ♡ 김한비 결혼식에 초대합니다.',
-            description: '2026년 1월 11일 일요일 오전 11시\n순천아모르웨딩컨벤션 1층 엘르홀',
-            imageUrl: 'https://ehrtjrhdcor.github.io/wedding/images/5.jpg',
-            link: {
-                mobileWebUrl: 'https://ehrtjrhdcor.github.io/wedding/',
-                webUrl: 'https://ehrtjrhdcor.github.io/wedding/',
-            },
-        },
-        buttons: [
-            {
-                title: '모바일 청첩장 보기',
-                link: {
-                    mobileWebUrl: 'https://ehrtjrhdcor.github.io/wedding/',
-                    webUrl: 'https://ehrtjrhdcor.github.io/wedding/',
-                },
-            },
-        ],
+    // 카카오 메시지 템플릿 ID
+    const TEMPLATE_ID = 127857;
+
+    Kakao.Share.sendCustom({
+        templateId: TEMPLATE_ID
     });
 }
 
