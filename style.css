@@ -1547,6 +1547,9 @@ h3.venue-name {
     font-weight: 500;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
 }
 
 .btn-kakao-share:hover {
@@ -1581,6 +1584,33 @@ h3.venue-name {
     font-weight: 500;
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+}
+
+#kakao-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background-color: #FFE812;
+    color: #000;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+}
+
+#kakao-share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .btn-link-copy:hover {
