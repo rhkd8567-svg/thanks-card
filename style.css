@@ -1587,6 +1587,7 @@ h3.venue-name {
     width: 100%;
     max-width: 300px;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 #kakao-share-btn {
@@ -1596,7 +1597,7 @@ h3.venue-name {
     padding: 15px 30px;
     background-color: #FFE812;
     color: #000;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
@@ -1606,6 +1607,7 @@ h3.venue-name {
     width: 100%;
     max-width: 300px;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 #kakao-share-btn:hover {
